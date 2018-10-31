@@ -1,0 +1,7 @@
+Command line:
+
+sftp fserran1@gs615-scf1.gsfc.nasa.gov
+(no pw required, remote autentication was set up)
+
+Website:
+
