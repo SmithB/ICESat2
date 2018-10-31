@@ -1,6 +1,8 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 """
+Generic reader for ATL06.
+
 Created on Thu Apr 26 14:58:17 2018
 
 Credits: Johan Nilsson, with contribution from Fernando Paolo.
