@@ -72,7 +72,7 @@ Two main ways (workflows) to contribute.
     git push
     ```
 
-5) Go to [ICESat2 repo](https://github.com/SmithB/ICESat2) and click **New pull request** to merge your changes with the original ICESat2 repo.
+5) Go to [ICESat2 repo](https://github.com/SmithB/ICESat2) and click **New pull request** to merge your changes with the original repo.
 
 6) Click **compare across forks**, and select your fork from the **3rd drop-down menu**.
 
@@ -81,7 +81,7 @@ Two main ways (workflows) to contribute.
 
 ### Some tips
 
-If you're really confident that your changes/additions will not break anything, you can skeep the branch creation and just do steps (1), (4) and (5): 
+If you are really confident that your changes/additions will not break anything, you can skeep the branch creation and just do steps (1), (4) and (5): 
     ```
     git clone https://github.com/SmithB/ICESat2.gi://github.com/SmithB/ICESat2.git
     cd ICESat2
