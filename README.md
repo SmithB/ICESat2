@@ -3,15 +3,17 @@ Scripts for processing and viewing ICESat-2 data
 
 ## Some tips
 
+4) Push the changes to the remote copy repo (i.e. to your GitHub):
+    ```
+    git push
+    ```
 If you are really confident that your changes/additions will not break anything, you can skip the branch creation and just do steps (1), (4) and (5): 
 
-    ```
     git clone https://github.com/SmithB/ICESat2.gi://github.com/SmithB/ICESat2.git
     cd ICESat2
     git add <program.py>
     git commit -m 'some message'
     git push
-    ```
 
 That's it.
 
