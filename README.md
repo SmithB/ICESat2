@@ -20,7 +20,7 @@ Two main ways (workflows) to contribute.
     git clone https://github.com/SmithB/ICESat2.gi://github.com/SmithB/ICESat2.git
     ```
 
-2) Create a new branch (`yourname`) locally where you will edit/add code:
+2) Create a new branch (e.g. `yourname`) locally where you will edit/add code:
     ```
     cd ICESat2
     git checkout -b yourname master
@@ -37,24 +37,24 @@ Two main ways (workflows) to contribute.
     git commit -m 'some message'
     ```
 
-5) Push the changes to the remote repo (`yourname` branch):
+5) Push the changes to the remote repo (to `yourname` branch):
     ```
     git push
     ```
 
-6) Now go to [GitHub](https://github.com/SmithB/ICESat2) and click 'Compare & pull request'. This will allow you to merge `yourname` with `master` if there are no inconsistencies. If there are conflicts, solve those.
+6) Now go to the [ICESat2 repo](https://github.com/SmithB/ICESat2) and click 'Compare & pull request'. This will allow you to merge `yourname` with `master` if there are no inconsistencies. If there are conflicts, solve those.
 
 
 ### 2) Fork Workflow
 
-- You will create a copy of the repo on your own GitHub account.
+- You will create a copy of the official repo on your own GitHub account.
 - You will edit and make additions to this copy.
 - You will create a Pull Request to incorporate your contribution to the official repo.
 - Any Collaborator (give your GitHub username to Ben) can review and approve the merge.
 
 1) Fork the official ICESat2 repo (i.e. make a copy on your GitHub account):
 
-    Go to [GitHub](https://github.com/SmithB/ICESat2) and click 'Fork' (upper-right corner)
+    Go to the [ICESat2 repo](https://github.com/SmithB/ICESat2) and click 'Fork' (upper-right corner)
 
 2) Clone your copy repo to your local machine:
     ```
@@ -67,20 +67,21 @@ Two main ways (workflows) to contribute.
     git commit -m 'some message'
     ```
 
-4) Push the changes to the remote copy repo (on your GitHub):
+4) Push the changes to the remote copy repo (i.e. to your GitHub):
     ```
     git push
     ```
 
-5) Create a 'Pull Request' to merge your changes with the original ICESat2 repo:
+5) Create a **Pull request** to merge your changes with the original ICESat2 repo:
+    ```
+    Go to [ICESat2 repo](https://github.com/SmithB/ICESat2) and click **New pull request**
+    ```
 
-    Go to [GitHub](https://github.com/SmithB/ICESat2) and click 'New pull request'.
+6) Select your fork and compare changes:
 
-6) Select you fork and compare changes:
+    Click **compare across forks**, and select your fork from the 3rd dop-down menu
 
-    Click 'compare across forks', and select your fork from the 3rd dop-down menu.
-
-7) Cick 'Create pull request'. If there are no conflicts, click 'Merge pull request'. If there are conflicts, fix those.
+7) Cick **Create pull request**. If there are no conflicts, click **Merge pull request**. If there are conflicts, fix those.
 
 
 ### Some tips
@@ -101,11 +102,12 @@ To keep your forked repo in sync with the original (upstream) repo, first point 
     git remote add upstream https://github.com/SmithB/ICESat2.git
     ```
 
-then every so often perform the update: 
+then every so often bring your forked repo up-to-date with the original: 
     ```
     git fetch upstream
     git checkout master
     git merge upstream/master
+    git push
     ```
 
 Before editing/adding code to your local repo (on your machine) make sure it's up-to-date w.r.t. the remote repo (on GitHub), do:
