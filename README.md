@@ -80,9 +80,13 @@ Two main ways (workflows) to contribute.
 
 ### Some tips
 
-1) Clone the original repo to your local machine:
+If you are really confident that your changes/additions will not break anything, you can skip the branch creation and just do steps (1), (4) and (5): 
     ```
     git clone https://github.com/SmithB/ICESat2.gi://github.com/SmithB/ICESat2.git
+    cd ICESat2
+    git add <program.py>
+    git commit -m 'some message'
+    git push
     ```
 
 If you are really confident that your changes/additions will not break anything, you can skip the branch creation and just do steps (1), (4) and (5): 
