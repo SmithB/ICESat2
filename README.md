@@ -43,7 +43,11 @@ There are two main ways (workflows) to contribute to the repo while minimizing u
     git push
     ```
 
-6) Now go to the [ICESat2 repo](https://github.com/SmithB/ICESat2) and click **Compare & pull request**. This will allow you to merge `yourname` with `master` if there are no inconsistencies. If there are conflicts, solve those.
+6) Go to the [ICESat2 repo](https://github.com/SmithB/ICESat2) and click **New pull request**.
+
+7) Select your branch from the **2nd drop-down menu** (to merge `yourname` with `master`).
+
+8) Cick **Create pull request**. If there are no conflicts, click **Merge pull request**. If there are conflicts, fix those.
 
 
 ## 2) Fork Workflow
