@@ -35,7 +35,7 @@ There are two main ways (workflows) to contribute to the repo while minimizing u
 4) Now you're free to edit/add code. Then save changes locally:
     ```
     git add <program.py>
-    git commit -m 'some message'
+    git commit -am 'some message'
     ```
 
 5) Push the changes to the remote repo (to `yourname` branch):
@@ -43,7 +43,11 @@ There are two main ways (workflows) to contribute to the repo while minimizing u
     git push
     ```
 
-6) Now go to the [ICESat2 repo](https://github.com/SmithB/ICESat2) and click **Compare & pull request**. This will allow you to merge `yourname` with `master` if there are no inconsistencies. If there are conflicts, solve those.
+6) Go to the [ICESat2 repo](https://github.com/SmithB/ICESat2) and click **New pull request**.
+
+7) Select your branch from the **2nd drop-down menu** (to merge `yourname` with `master`).
+
+8) Cick **Create pull request**. If there are no conflicts, click **Merge pull request**. If there are conflicts, fix those.
 
 
 ## 2) Fork Workflow
@@ -63,7 +67,7 @@ There are two main ways (workflows) to contribute to the repo while minimizing u
 3) Now you're free to edit/add code. Then save changes locally:
     ```
     git add <program.py>
-    git commit -m 'some message'
+    git commit -am 'some message'
     ```
 
 4) Push the changes to the remote copy repo (i.e. to your GitHub):
@@ -85,7 +89,7 @@ If you are really confident that your changes/additions will not break anything,
     git clone https://github.com/SmithB/ICESat2.gi://github.com/SmithB/ICESat2.git
     cd ICESat2
     git add <program.py>
-    git commit -m 'some message'
+    git commit -am 'some message'
     git push
 
 That's it.
