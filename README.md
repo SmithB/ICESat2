@@ -15,7 +15,7 @@ Two main ways (workflows) to contribute.
 - When you are done with edits/additions you will merge `work` with `master`.
 - This will check inconsistencies between branches and let you know it's safe to merge.
 
-1) Clone original repo to your local machine:
+1) Clone the original repo to your local machine:
     ```
     git clone https://github.com/SmithB/ICESat2.gi://github.com/SmithB/ICESat2.git
     ```
@@ -56,7 +56,7 @@ Two main ways (workflows) to contribute.
 
     Go to the [ICESat2 repo](https://github.com/SmithB/ICESat2) and click 'Fork' (upper-right corner)
 
-2) Clone your copy repo to your local machine:
+2) Clone the forked repo to your local machine:
     ```
     git clone https://github.com/<yourname>/ICESat2.git
     ```
@@ -72,20 +72,16 @@ Two main ways (workflows) to contribute.
     git push
     ```
 
-5) Create a **Pull request** to merge your changes with the original ICESat2 repo:
+5) Go to [ICESat2 repo](https://github.com/SmithB/ICESat2) and click **New pull request** to merge your changes with the original ICESat2 repo.
 
-    Go to [ICESat2 repo](https://github.com/SmithB/ICESat2) and click **New pull request**
-
-6) Select your fork and compare changes:
-
-    Click **compare across forks**, and select your fork from the 3rd drop-down menu
+6) Click **compare across forks**, and select your fork from the **3rd drop-down menu**.
 
 7) Cick **Create pull request**. If there are no conflicts, click **Merge pull request**. If there are conflicts, fix those.
 
 
 ### Some tips
 
-If you're really confident that your changes/additions will not break anything, you can skeep the branch creation and just do steps (1), (4) and (5):
+If you're really confident that your changes/additions will not break anything, you can skeep the branch creation and just do steps (1), (4) and (5): 
     ```
     git clone https://github.com/SmithB/ICESat2.gi://github.com/SmithB/ICESat2.git
     cd ICESat2
@@ -117,9 +113,9 @@ Before editing/adding code to your local repo (on your machine) make sure it's u
 
 ### Further (easy) reading
 
-    - [Branch Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow)
-    - [Fork Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow)
-    - [Working with Forks](https://help.github.com/articles/working-with-forks/)
+    [Branch Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow)
+    [Fork Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow)
+    [Working with Forks](https://help.github.com/articles/working-with-forks/)
     k
 
 
