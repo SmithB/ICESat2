@@ -47,7 +47,7 @@ There are two main ways (workflows) to contribute to the repo while minimizing u
 
 7) Select your branch from the **2nd drop-down menu** (to merge `yourname` with `master`).
 
-8) Cick **Create pull request**. If there are no conflicts, click **Merge pull request**. If there are conflicts, fix those.
+8) Click **Create pull request**. If there are no conflicts, click **Merge pull request**. If there are conflicts, fix those.
 
 
 ## 2) Fork Workflow
@@ -79,7 +79,7 @@ There are two main ways (workflows) to contribute to the repo while minimizing u
 
 6) Click **compare across forks**, and select your fork from the **3rd drop-down menu**.
 
-7) Cick **Create pull request**. If there are no conflicts, click **Merge pull request**. If there are conflicts, fix those.
+7) Click **Create pull request**. If there are no conflicts, click **Merge pull request**. If there are conflicts, fix those.
 
 
 ## Some tips
@@ -114,7 +114,9 @@ Before editing/adding code to your local repo (on your machine) make sure it's u
 
 - [Branch Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow)
 - [Fork Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow)
+- [Branch vs Fork workflows](https://softwareengineering.stackexchange.com/a/304489)
 - [Working with Forks](https://help.github.com/articles/working-with-forks/)
+- [Contributor vs Collaborator](https://github.com/CoolProp/CoolProp/wiki/Contributors-vs-Collaborators)
 
 
 
