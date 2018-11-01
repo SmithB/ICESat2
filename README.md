@@ -73,13 +73,12 @@ Two main ways (workflows) to contribute.
     ```
 
 5) Create a **Pull request** to merge your changes with the original ICESat2 repo:
-    ```
+
     Go to [ICESat2 repo](https://github.com/SmithB/ICESat2) and click **New pull request**
-    ```
 
 6) Select your fork and compare changes:
 
-    Click **compare across forks**, and select your fork from the 3rd dop-down menu
+    Click **compare across forks**, and select your fork from the 3rd drop-down menu
 
 7) Cick **Create pull request**. If there are no conflicts, click **Merge pull request**. If there are conflicts, fix those.
 
