@@ -81,40 +81,36 @@ There are two main ways (workflows) to contribute to the repo while minimizing u
 ## Some tips
 
 If you are really confident that your changes/additions will not break anything, you can skip the branch creation and just do steps `(1)`, `(4)` and `(5)`: 
-    ```
+
     git clone https://github.com/SmithB/ICESat2.gi://github.com/SmithB/ICESat2.git
     cd ICESat2
     git add <program.py>
     git commit -m 'some message'
     git push
-    ```
 
 That's it.
 
 To keep your forked repo in sync with the original (upstream) repo, first point to it:
-    ```
+
     git remote add upstream https://github.com/SmithB/ICESat2.git
-    ```
 
 then every so often bring your forked repo up-to-date with the original: 
-    ```
+
     git fetch upstream
     git checkout master
     git merge upstream/master
     git push
-    ```
 
 Before editing/adding code to your local repo (on your machine) make sure it's up-to-date w.r.t. the remote repo (on GitHub), do:
-    ```
+
     git pull
-    ```
 
 
 ## Further (easy) reading
 
-    [Branch Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow)
-    [Fork Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow)
-    [Working with Forks](https://help.github.com/articles/working-with-forks/)
+    - [Branch Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow)
+    - [Fork Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow)
+    - [Working with Forks](https://help.github.com/articles/working-with-forks/)
     k
 
 
