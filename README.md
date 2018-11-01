@@ -42,7 +42,7 @@ Two main ways (workflows) to contribute.
     git push
     ```
 
-6) Now go to the [ICESat2 repo](https://github.com/SmithB/ICESat2) and click 'Compare & pull request'. This will allow you to merge `yourname` with `master` if there are no inconsistencies. If there are conflicts, solve those.
+6) Now go to the [ICESat2 repo](https://github.com/SmithB/ICESat2) and click **Compare & pull request**. This will allow you to merge `yourname` with `master` if there are no inconsistencies. If there are conflicts, solve those.
 
 
 ### 2) Fork Workflow
@@ -52,9 +52,7 @@ Two main ways (workflows) to contribute.
 - You will create a Pull Request to incorporate your contribution to the official repo.
 - Any Collaborator (give your GitHub username to Ben) can review and approve the merge.
 
-1) Fork the official ICESat2 repo (i.e. make a copy on your GitHub account):
-
-    Go to the [ICESat2 repo](https://github.com/SmithB/ICESat2) and click 'Fork' (upper-right corner)
+1) Go to the [ICESat2 repo](https://github.com/SmithB/ICESat2) and click **Fork** (upper-right corner) to make a copy on your own GitHub account.
 
 2) Clone the forked repo to your local machine:
     ```
@@ -72,16 +70,20 @@ Two main ways (workflows) to contribute.
     git push
     ```
 
-5) Go to [ICESat2 repo](https://github.com/SmithB/ICESat2) and click **New pull request** to merge your changes with the original repo.
+5) Go to the [ICESat2 repo](https://github.com/SmithB/ICESat2) and click **New pull request** to merge your changes with the original repo.
 
 6) Click **compare across forks**, and select your fork from the **3rd drop-down menu**.
 
 7) Cick **Create pull request**. If there are no conflicts, click **Merge pull request**. If there are conflicts, fix those.
 
+Some code:
+    ```
+    python code.py
+    ```
 
 ### Some tips
 
-If you are really confident that your changes/additions will not break anything, you can skeep the branch creation and just do steps (1), (4) and (5): 
+If you are really confident that your changes/additions will not break anything, you can skip the branch creation and just do steps (1), (4) and (5): 
     ```
     git clone https://github.com/SmithB/ICESat2.gi://github.com/SmithB/ICESat2.git
     cd ICESat2
