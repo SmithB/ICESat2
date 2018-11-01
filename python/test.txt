@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 Another test
+=======
+TEST
+>>>>>>> d3ba45b... testing fork workflow
