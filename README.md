@@ -49,7 +49,7 @@ There are two main ways (workflows) to contribute to the repo while minimizing u
 ## 2) Fork Workflow
 
 - You will create a copy of the official repo on your own GitHub account.
-- You will edit and make additions to this copy.
+- You will edit and make additions to that copy.
 - You will create a Pull Request to incorporate your contribution to the official repo.
 - Any Collaborator (give your GitHub username to Ben) can review and approve the merge.
 
