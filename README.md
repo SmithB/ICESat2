@@ -1,12 +1,13 @@
 # ICESat2
 Scripts for processing and viewing ICESat-2 data
 
+
 ## Recipe to contribute
 
-Two main ways (workflows) to contribute.
+There are two main ways (workflows) you can contribute code to the repo while minimizing update conflicts.
 
 
-### 1) Branch Workflow
+## 1) Branch Workflow
 
 - You will work directly with the original repo (on Ben's GitHub).
 - Think of `branches` as folders.  
@@ -45,7 +46,7 @@ Two main ways (workflows) to contribute.
 6) Now go to the [ICESat2 repo](https://github.com/SmithB/ICESat2) and click **Compare & pull request**. This will allow you to merge `yourname` with `master` if there are no inconsistencies. If there are conflicts, solve those.
 
 
-### 2) Fork Workflow
+## 2) Fork Workflow
 
 - You will create a copy of the official repo on your own GitHub account.
 - You will edit and make additions to this copy.
@@ -77,19 +78,11 @@ Two main ways (workflows) to contribute.
 7) Cick **Create pull request**. If there are no conflicts, click **Merge pull request**. If there are conflicts, fix those.
 
 
-
-### Some tips
-
-If you are really confident that your changes/additions will not break anything, you can skip the branch creation and just do steps (1), (4) and (5): 
-    ```
-    git clone https://github.com/SmithB/ICESat2.gi://github.com/SmithB/ICESat2.git
-    cd ICESat2
-    git add <program.py>
-    git commit -m 'some message'
-    git push
-    ```
+## Some tips
 
 If you are really confident that your changes/additions will not break anything, you can skip the branch creation and just do steps (1), (4) and (5): 
+
+A test:
     ```
     git clone https://github.com/SmithB/ICESat2.gi://github.com/SmithB/ICESat2.git
     cd ICESat2
@@ -119,7 +112,7 @@ Before editing/adding code to your local repo (on your machine) make sure it's u
     ```
 
 
-### Further (easy) reading
+## Further (easy) reading
 
     [Branch Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow)
     [Fork Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow)
