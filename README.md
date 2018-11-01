@@ -3,11 +3,7 @@ Scripts for processing and viewing ICESat-2 data
 
 ## Some tips
 
-If you are really confident that your changes/additions will not break anything, you can skip the branck creation and just do steps (1) ,(4) and (5):
-    ```
-    git push
-    ```
-If you are really confident that your changes/additions will not break anything, you can skip the branch creation and just do steps (1), (4) and (5): 
+If you are really confident that your changes/additions will not break anything, you can skip the branch creation and just do steps `(1)`, `(4)` and `(5)`: 
 
     git clone https://github.com/SmithB/ICESat2.gi://github.com/SmithB/ICESat2.git
     cd ICESat2
