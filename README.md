@@ -35,7 +35,7 @@ There are two main ways (workflows) to contribute to the repo while minimizing u
 4) Now you're free to edit/add code. Then save changes locally:
     ```
     git add <program.py>
-    git commit -m 'some message'
+    git commit -am 'some message'
     ```
 
 5) Push the changes to the remote repo (to `yourname` branch):
@@ -67,7 +67,7 @@ There are two main ways (workflows) to contribute to the repo while minimizing u
 3) Now you're free to edit/add code. Then save changes locally:
     ```
     git add <program.py>
-    git commit -m 'some message'
+    git commit -am 'some message'
     ```
 
 4) Push the changes to the remote copy repo (i.e. to your GitHub):
@@ -89,7 +89,7 @@ If you are really confident that your changes/additions will not break anything,
     git clone https://github.com/SmithB/ICESat2.gi://github.com/SmithB/ICESat2.git
     cd ICESat2
     git add <program.py>
-    git commit -m 'some message'
+    git commit -am 'some message'
     git push
 
 That's it.
