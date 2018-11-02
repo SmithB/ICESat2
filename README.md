@@ -4,7 +4,7 @@ Scripts for processing and viewing ICESat-2 data
 
 ## Recipe to contribute
 
-There are two main ways (workflows) to contribute to the repo while minimizing update conflicts.
+There are two main ways (workflows) to contribute to the repo while avoiding update conflicts.
 
 
 ## 1) Branch Workflow
