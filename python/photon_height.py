@@ -108,14 +108,14 @@ def photon_heights(infile, track, outroot, confidence, plot=False,
     if verbose:
         print(len(distance), "photons with confidence >=", confidence)
         print(len(height), "photons with confidence >=", confidence)
-
-    outfile = outroot + ".txt"
-    try:
-        write_data(outfile, distance, height, overwrite=overwrite,
-                   verbose=verbose)
-    except (IOError, RuntimeError) as err:
-        print("{0}: error: {1}".format(__file__, err), file=sys.stderr)
-        return 1
+    if outroot is not None:
+        outfile = outroot + ".txt"
+        try:
+            write_data(outfile, distance, height, overwrite=overwrite,
+                       verbose=verbose)
+        except (IOError, RuntimeError) as err:
+            print("{0}: error: {1}".format(__file__, err), file=sys.stderr)
+            return 1
 
     if plot:
         """
@@ -342,10 +342,10 @@ def cl_args(description):
     """Parse command line arguments."""
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument("infile", type=str,
-                        help="nput ATL03 file")
+                        help="input ATL03 file")
     parser.add_argument("track", type=str,
                         help="ground track: gt1l,gt1r,gt2l,gt2r,gt3l,gt3r,")
-    parser.add_argument("outroot", type=str,
+    parser.add_argument("-o", type=str, default=None,
                         help="output file root name")
     parser.add_argument("-c", type=int, default=2,
                         help="minimum signal confidence to plot (0-4)"
@@ -367,7 +367,7 @@ def main(argv=None):
 
     infile = args.infile
     track = args.track
-    outroot = args.outroot
+    outroot = args.o
     confidence_min = args.c
     overwrite = args.f
     plot = args.p
