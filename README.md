@@ -84,7 +84,7 @@ There are two main ways (workflows) to contribute to the repo while avoiding upd
 
 ## Some tips
 
-#### If you are really confident that your changes/additions will not break anything, you can skip the branch creation and just do steps `(1)`, `(4)` and `(5)`: 
+**If you are really confident that your changes/additions will not break anything, you can skip the branch creation and just do steps `(1)`, `(4)` and `(5)`:** 
 
     git clone https://github.com/SmithB/ICESat2.gi://github.com/SmithB/ICESat2.git
     cd ICESat2
@@ -94,7 +94,7 @@ There are two main ways (workflows) to contribute to the repo while avoiding upd
 
 That's it.
 
-#### To keep your forked repo in sync with the original (upstream) repo, first point to it:
+**To keep your forked repo in sync with the original (upstream) repo, first point to it:**
 
     git remote add upstream https://github.com/SmithB/ICESat2.git
 
@@ -105,18 +105,18 @@ then every so often bring your forked repo up-to-date with the original:
     git merge upstream/master
     git push
 
-#### Before editing/adding code to your local repo (on your machine) make sure it's up-to-date w.r.t. the remote repo (on GitHub), do:
+**Before editing/adding code to your local repo (on your machine) make sure it's up-to-date w.r.t. the remote repo (on GitHub), do:**
 
     git pull
 
-#### Rules for a great git commit message style:
+**Rules for great git commit messages:**
 
-    * Separate subject from body with a blank line
-    * Do not end the subject line with a period
-    * Capitalize the subject line and each paragraph
-    * Use the imperative mood in the subject line
-    * Wrap lines at 72 characters
-    * Use the body to explain what and why you have done something (if needed)
+* Separate subject from body with a blank line
+* Do not end the subject line with a period
+* Capitalize the subject line and each paragraph
+* Use the imperative mood in the subject line
+* Wrap lines at 72 characters
+* Use the body to explain what and why you have done something (if needed)
 
 Example:
 
@@ -133,6 +133,7 @@ Example:
 - [Branch vs Fork workflows](https://softwareengineering.stackexchange.com/a/304489)
 - [Working with Forks](https://help.github.com/articles/working-with-forks/)
 - [Contributor vs Collaborator](https://github.com/CoolProp/CoolProp/wiki/Contributors-vs-Collaborators)
+- [How to write a commit message](https://chris.beams.io/posts/git-commit/)
 
 
 
