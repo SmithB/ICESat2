@@ -109,7 +109,7 @@ then every so often bring your forked repo up-to-date with the original:
 
     git pull
 
-**Rules for great git commit messages:**
+**Rules for a great git commit message:**
 
 * Separate subject from body with a blank line
 * Do not end the subject line with a period
@@ -133,7 +133,7 @@ Example:
 - [Branch vs Fork workflows](https://softwareengineering.stackexchange.com/a/304489)
 - [Working with Forks](https://help.github.com/articles/working-with-forks/)
 - [Contributor vs Collaborator](https://github.com/CoolProp/CoolProp/wiki/Contributors-vs-Collaborators)
-- [How to write a commit message](https://chris.beams.io/posts/git-commit/)
+- [Writing good commit messages](https://chris.beams.io/posts/git-commit/)
 
 
 
