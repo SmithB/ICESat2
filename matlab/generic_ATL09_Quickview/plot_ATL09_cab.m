@@ -57,6 +57,7 @@ for pp = 1:numel(profiles_log)
     hold on
     
     cmap = colormap(parula);
+    
     if subtract_min
         x_prof=ATL09.(profile).(x_var) - min(ATL09.(profile).(x_var));
     else
@@ -64,6 +65,7 @@ for pp = 1:numel(profiles_log)
     end
         
     p = pcolor(x_prof, cab_elevs, flipud(ATL09.(profile).cab_prof));
+
     shading flat
     set(p,'DisplayName', 'CAB')
     cdat = get(p, 'cdata');
@@ -83,12 +85,14 @@ for pp = 1:numel(profiles_log)
     %% Plot labels
     
     xlabel(xlabel_str)
+
     ylabel('Elevation (meters)')
     title({'Calibrated attenuated backscatter profile',...
         [profile ' - ' inName]}, ...
         'interpreter', 'none')
     axis tight
     legend('-DynamicLegend','Location','Best')
+
     %dragzoom()
     
     %% Save figure(s)
