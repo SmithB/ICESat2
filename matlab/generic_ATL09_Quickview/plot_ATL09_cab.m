@@ -1,4 +1,4 @@
-function plot_ATL09_cab(ATL09, inName, figVis, saveFigures, outDir)
+function plot_ATL09_cab(ATL09, inName, figVis, saveFigures, outDir, x_var)
 % Function to plot ATL09 calibrated attenuated backscatter.
 % Not as pretty as Steve Palm's plots, but it gets the message across.
 %
@@ -14,6 +14,15 @@ if ~exist('saveFigures', 'var') || ~saveFigures
     outDir = [];
 end
 
+%% 
+if ~exist('x_var','var')
+    x_var='delta_time';
+    xlabel_str='Delta Segment Time (seconds)';
+    subtract_min=true;
+else
+    xlabel_str=strrep(x_var,'_','\_');
+    subtract_min=false;
+end
 
 %% Find and loop through the profile groups
 
@@ -48,7 +57,15 @@ for pp = 1:numel(profiles_log)
     hold on
     
     cmap = colormap(parula);
-    p = pcolor(ATL09.(profile).delta_time - min(ATL09.(profile).delta_time), cab_elevs, flipud(ATL09.(profile).cab_prof));
+    
+    if subtract_min
+        x_prof=ATL09.(profile).(x_var) - min(ATL09.(profile).(x_var));
+    else
+        x_prof=ATL09.(profile).(x_var);
+    end
+        
+    p = pcolor(x_prof, cab_elevs, flipud(ATL09.(profile).cab_prof));
+
     shading flat
     set(p,'DisplayName', 'CAB')
     cdat = get(p, 'cdata');
@@ -67,14 +84,16 @@ for pp = 1:numel(profiles_log)
     
     %% Plot labels
     
-    xlabel('Delta Segment Time (seconds)')
+    xlabel(xlabel_str)
+
     ylabel('Elevation (meters)')
     title({'Calibrated attenuated backscatter profile',...
         [profile ' - ' inName]}, ...
         'interpreter', 'none')
     axis tight
     legend('-DynamicLegend','Location','Best')
-    dragzoom()
+
+    %dragzoom()
     
     %% Save figure(s)
     % Uncomment savefig line if MATLAB figure desired. It will take longer

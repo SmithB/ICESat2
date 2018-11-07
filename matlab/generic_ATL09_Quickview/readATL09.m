@@ -18,7 +18,7 @@ ATL09 = struct;
 
 profile = {'profile_1','profile_2','profile_3'};
 
-vars = {'apparent_surf_reflec','bsnow_con','cab_prof','cloud_flag_asr','cloud_flag_atm','delta_time','latitude','layer_attr','layer_con','longitude','msw_flag','segment_id','solar_elevation'};
+vars = {'apparent_surf_reflec','bsnow_con','cab_prof','cloud_flag_asr','cloud_flag_atm','delta_time','latitude','layer_attr','layer_con','longitude','msw_flag','prof_dist_x','segment_id','solar_elevation'};
 vars_orbit = {'cycle_number','delta_time','orbit_number','rgt'};
 vars_anc =  {'data_end_utc';'data_start_utc';'end_cycle';'end_geoseg';'end_orbit';'end_region';'end_rgt';'granule_end_utc';'granule_start_utc';'start_cycle';'start_geoseg';'start_orbit';'start_region';'start_rgt'};
 
