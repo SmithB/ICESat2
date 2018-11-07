@@ -84,7 +84,7 @@ There are two main ways (workflows) to contribute to the repo while avoiding upd
 
 ## Some tips
 
-1. If you are really confident that your changes/additions will not break anything, you can skip the branch creation and just do steps `(1)`, `(4)` and `(5)`: 
+#### If you are really confident that your changes/additions will not break anything, you can skip the branch creation and just do steps `(1)`, `(4)` and `(5)`: 
 
     git clone https://github.com/SmithB/ICESat2.gi://github.com/SmithB/ICESat2.git
     cd ICESat2
@@ -94,7 +94,7 @@ There are two main ways (workflows) to contribute to the repo while avoiding upd
 
 That's it.
 
-2. To keep your forked repo in sync with the original (upstream) repo, first point to it:
+#### To keep your forked repo in sync with the original (upstream) repo, first point to it:
 
     git remote add upstream https://github.com/SmithB/ICESat2.git
 
@@ -105,19 +105,18 @@ then every so often bring your forked repo up-to-date with the original:
     git merge upstream/master
     git push
 
-3. Before editing/adding code to your local repo (on your machine) make sure it's up-to-date w.r.t. the remote repo (on GitHub), do:
+#### Before editing/adding code to your local repo (on your machine) make sure it's up-to-date w.r.t. the remote repo (on GitHub), do:
 
     git pull
 
-4. Rules for a great git commit message style:
+#### Rules for a great git commit message style:
 
-     1. Separate subject from body with a blank line
-     2. Limit the subject line to 50 characters
-     3. Capitalize the subject line
-     4. Do not end the subject line with a period
-     5. Use the imperative mood in the subject line
-     6. Wrap the body at 72 characters
-     7. Use the body to explain what and why vs. how (if needed)
+    * Separate subject from body with a blank line
+    * Do not end the subject line with a period
+    * Capitalize the subject line and each paragraph
+    * Use the imperative mood in the subject line
+    * Wrap lines at 72 characters
+    * Use the body to explain what and why you have done something (if needed)
 
 Example:
 
