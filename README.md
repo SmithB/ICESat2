@@ -35,7 +35,7 @@ There are two main ways (workflows) to contribute to the repo while avoiding upd
 4) Now you're free to edit/add code. Then save changes locally:
     ```
     git add <program.py>
-    git commit -am 'some message'
+    git commit -am 'Some message'
     ```
 
 5) Push the changes to the remote repo (to `yourname` branch):
@@ -67,7 +67,7 @@ There are two main ways (workflows) to contribute to the repo while avoiding upd
 3) Now you're free to edit/add code. Then save changes locally:
     ```
     git add <program.py>
-    git commit -am 'some message'
+    git commit -am 'Some message'
     ```
 
 4) Push the changes to the remote copy repo (i.e. to your GitHub):
@@ -84,17 +84,17 @@ There are two main ways (workflows) to contribute to the repo while avoiding upd
 
 ## Some tips
 
-If you are really confident that your changes/additions will not break anything, you can skip the branch creation and just do steps `(1)`, `(4)` and `(5)`: 
+1. If you are really confident that your changes/additions will not break anything, you can skip the branch creation and just do steps `(1)`, `(4)` and `(5)`: 
 
     git clone https://github.com/SmithB/ICESat2.gi://github.com/SmithB/ICESat2.git
     cd ICESat2
     git add <program.py>
-    git commit -am 'some message'
+    git commit -am 'Some message'
     git push
 
 That's it.
 
-To keep your forked repo in sync with the original (upstream) repo, first point to it:
+2. To keep your forked repo in sync with the original (upstream) repo, first point to it:
 
     git remote add upstream https://github.com/SmithB/ICESat2.git
 
@@ -105,9 +105,26 @@ then every so often bring your forked repo up-to-date with the original:
     git merge upstream/master
     git push
 
-Before editing/adding code to your local repo (on your machine) make sure it's up-to-date w.r.t. the remote repo (on GitHub), do:
+3. Before editing/adding code to your local repo (on your machine) make sure it's up-to-date w.r.t. the remote repo (on GitHub), do:
 
     git pull
+
+4. Rules for a great git commit message style:
+
+     1. Separate subject from body with a blank line
+     2. Limit the subject line to 50 characters
+     3. Capitalize the subject line
+     4. Do not end the subject line with a period
+     5. Use the imperative mood in the subject line
+     6. Wrap the body at 72 characters
+     7. Use the body to explain what and why vs. how (if needed)
+
+Example:
+
+    Add code to read specific data file
+    Update getting started documentation
+    Replace subsystem X for readability
+    Remove deprecated methods
 
 
 ## Further (easy) reading
