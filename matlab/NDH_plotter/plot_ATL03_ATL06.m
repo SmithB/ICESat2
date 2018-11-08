@@ -1,4 +1,4 @@
-function plot_ATL03_ATL06(atl03s,atl06s,bp,l_or_r,subsetflag,subset1,subset2)
+function plot_ATL03_ATL06_for_sharing(atl03s,atl06s,bp,l_or_r,subsetflag,subset1,subset2)
 % (C) Nick Holschuh - U. of Washington - 2018 (Nick.Holschuh@gmail.com)
 % This file reads the atl03 and atl06 h5 files, and plots them on top of
 % one another for comparison. 
@@ -287,7 +287,7 @@ dhfdx_r = dhfdx_r(ind2);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% beam and one for the weak beam.
 
 
-c = {'lightgray','darkgray','lightblue','slateblue','blue'};
+c = {'lightgray','darkgray','slateblue','lightblue'};
 animation_flag = 0;
 
 if l_or_r == 1 | l_or_r == 3
@@ -323,7 +323,8 @@ if l_or_r == 1 | l_or_r == 3
     end
     
     %plot_segs(x_l,h_l,dhfdx_l,40,['''Color'',color_call(''darkblue''),''LineWidth'',2']);
-    plot_segs(x_l,h_l,dhfdx_l,40,['''Color'',color_call(''gold''),''LineWidth'',2']);
+    %plot_segs(x_l,h_l,dhfdx_l,40,['''Color'',color_call(''gold''),''LineWidth'',2']);
+    plot_segs(x_l,h_l,dhfdx_l,40,['''Color'',color_call(''black''),''LineWidth'',2']);
     
     legend_inp = {};
     for i = 1:4
@@ -406,7 +407,8 @@ if l_or_r == 2 | l_or_r == 3
     end
     
     %plot_segs(x_r,h_r,dhfdx_r,40,['''Color'',color_call(''darkblue''),''LineWidth'',2']);
-    plot_segs(x_r,h_r,dhfdx_r,40,['''Color'',color_call(''gold''),''LineWidth'',2']);
+    %plot_segs(x_r,h_r,dhfdx_r,40,['''Color'',color_call(''gold''),''LineWidth'',2']);
+    plot_segs(x_r,h_r,dhfdx_r,40,['''Color'',color_call(''black''),''LineWidth'',2']);
     
     legend_inp = {};
     for i = 1:4
@@ -463,22 +465,6 @@ end
 
 title(true_name(atl03_fname));
 
-
-figure()
-if min(lat_r) < 0
-    [xtemp ytemp] = polarstereo_fwd(lat_r,lon_r);
-    groundingline(1);
-    plot(xtemp,ytemp,'Color','blue')
-    axis equal
-else
-    [xtemp ytemp] = polarstereo_fwd(lat_r,lon_r);
-    groundingline(6);
-    groundingline(7);
-    plot(xtemp,ytemp,'Color','blue')
-    axis equal
-end
-
-title(true_name(atl03_fname));
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Code for Animation
 %     loop_steps = 1:length(xp);
@@ -665,14 +651,12 @@ end
 end
 
 
-
 function h=plot_segs(x, h, slope, W, linespec)
 
 
 eval_string = ['h=plot([x(:)-W/2 x(:)+W/2]'', [h(:)-slope(:)*W/2 h(:)+slope(:)*W/2]'',', linespec,');'];
 eval(eval_string);
 end
-
 
 
 function outval = strcmp_ndh(stringlist,comparator);
@@ -683,6 +667,9 @@ end
 
 outval = max(val);
 end
+
+
+
 
 
 
