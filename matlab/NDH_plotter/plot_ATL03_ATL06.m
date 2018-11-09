@@ -26,6 +26,7 @@ function plot_ATL03_ATL06_for_sharing(atl03s,atl06s,bp,l_or_r,subsetflag,subset1
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
 
+
 if iscell(atl03s) == 0
     atl03s = {atl03s};
 end
@@ -48,7 +49,6 @@ if exist('subsetflag') == 0
     subset2 = 0;
 end
 
-
 if exist('additional_groundfinder') == 0
     additional_groundfinder = [];
 else
@@ -59,7 +59,6 @@ else
     end
 end
 
-truthfile = 0;
 if exist('truthfile') == 0
     truthfile = [];
     truth_search_flag = 0;
@@ -146,7 +145,7 @@ for j = 1:length(atl03s)
         photon_seglength_r = [photon_seglength_r; eval(['atl03.gt',num2str(bp),'r.geolocation.segment_length'])];
         
         running_count_1 = 1;
-        for i = 1:length(photon_segcount_l)
+        for i = 1:length(photon_segcount_r)
             running_count_2 = running_count_1 + photon_segcount_r(i) - 1;
             photon_x_r = [photon_x_r; ones(photon_segcount_r(i),1)*photon_segx_r(i)+photon_x_r_seg(running_count_1:running_count_2)];
             running_count_1 = running_count_2 + 1;
@@ -257,7 +256,37 @@ for j = 1:length(atl06s)
         lon_r = [lon_r; eval(['atl06.gt',num2str(bp),'r.land_ice_segments.longitude'])];
         dhfdx_r = [dhfdx_r; eval(['atl06.gt',num2str(bp),'r.land_ice_segments.fit_statistics.dh_fit_dx'])];
     end
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %%%%%%%%%%%%%%%% Here we do the groundtruthing
+    if length(truthfile) > 0 && truth_search_flag == 0
+       load(truthfile{j});
        
+       truthx_l = [truthx_l; double(eval(['outdata2.gt',num2str(bp),'l.recorded_x_RGT']))];
+       truthh_l = [truthh_l; eval(['outdata2.gt',num2str(bp),'l.true_h'])];
+       truthx_r = [truthx_r; double(eval(['outdata2.gt',num2str(bp),'r.recorded_x_RGT']))];
+       truthh_r = [truthh_r; eval(['outdata2.gt',num2str(bp),'r.true_h'])]; 
+       
+    elseif length(truthfile) > 0 && truth_search_flag == 1
+       [xtemp ytemp] = polarstereo_fwd(lat_l,lon_l);
+       truthx_l = x_l;
+       if min(lat_l) < 0
+           truthh_l = Antarctic_Topography_search([xtemp ytemp],5);
+       else
+           truthh_l = Greenland_Topography_search([xtemp ytemp],8);
+       end
+       [xtemp ytemp] = polarstereo_fwd(lat_r,lon_r);
+       truthx_r = x_r;
+       if min(lat_r) < 0
+           %%%%%%% Helm DEM
+           %truthh_r = Antarctic_Topography_search([xtemp ytemp],5);
+           %%%%%%% REMA
+           truthh_r = Antarctic_Topography_search([xtemp ytemp],11);
+       else
+           truthh_r = Greenland_Topography_search([xtemp ytemp],8);
+       end
+    end
+    
 end
 
 ind1 = find(h_l < 1e5);
@@ -336,7 +365,7 @@ if l_or_r == 1 | l_or_r == 3
     end
     
     if length(truthfile) > 0
-        legend_inp(end+1:end+2) = {'Ground Truth','ATL06'};
+        legend_inp(end+1:end+2) = {'''''Ground Truth''''','ATL06'};
     else
         legend_inp(end+1) = {'ATL06'};
     end
@@ -392,9 +421,9 @@ if l_or_r == 2 | l_or_r == 3
     hold off
     for i = 1:4
         if i == 1
-            inds = [find(photon_class_l <= i)];
+            inds = [find(photon_class_r <= i)];
         else
-           inds = [find(photon_class_l == i)]; 
+           inds = [find(photon_class_r == i)]; 
         end
         if length(inds) > 0
             plot(photon_x_r(inds),photon_h_r(inds),'.','Color',color_call(c{i}),'MarkerSize',(i+2)*1.5)
@@ -420,11 +449,14 @@ if l_or_r == 2 | l_or_r == 3
     end
     
     if length(truthfile) > 0
-        legend_inp(end+1:end+2) = {'Ground Truth','ATL06'};
+        legend_inp(end+1:end+2) = {'''''Ground Truth''''','ATL06'};
     else
         legend_inp(end+1) = {'ATL06'};
     end
     legend(legend_inp)
+    
+    legend({['Beam ',num2str(bp),' - Right']},'Location','northwest')
+    
     xlabel('Distance Along Track (m)')
     ylabel('Right Beam - Elevation')
     
@@ -458,12 +490,19 @@ if l_or_r == 2 | l_or_r == 3
    
 end
 
+
 if l_or_r == 3
     linkaxes([aa bb],'xy');
     subplot(2,1,1)
 end
 
-title(true_name(atl03_fname));
+if l_or_r == 1
+    title([true_name(atl03_fname),' -- Beam ',num2str(bp),' - Left']);
+elseif l_or_r == 2
+    title([true_name(atl03_fname),' -- Beam ',num2str(bp),' - Right']);
+elseif l_or_r == 3
+    title([true_name(atl03_fname),' -- Beam ',num2str(bp),' - Left/Right']);
+end
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Code for Animation
