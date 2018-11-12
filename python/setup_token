@@ -8,5 +8,5 @@ username=$1
 password=$2
 ip_address=$3
 
-curl -X POST --header "Content-Type: application/xml" -d "<token><username>$username</username><password>$password</password><client_id>NSIDC_client_id</client_id><user_ip_address>$ip_address</user_ip_address></token>" https://api.echo.nasa.gov/echo-rest/tokens > NSIDC_token
+curl -X POST --header "Content-Type: application/xml" -d "<token><username>$username</username><password>$password</password><client_id>NSIDC_client_id</client_id><user_ip_address>$ip_address</user_ip_address></token>" https://api.echo.nasa.gov/echo-rest/tokens > NSIDC_token.txt
 
