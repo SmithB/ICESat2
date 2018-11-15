@@ -70,9 +70,9 @@ with open('response-header.txt') as ff:
         if m is not None:
             zip_file=m.group(1)
 zip_str=subprocess.check_output(['unzip',zip_file])
-#print(zip_str)
 
-# pull the indivicual h5 files into the current directory
+# the output from unzipping the zip file is a set of directories containing the
+# h5 data files. pull the indivicual h5 files into the current directory
 cleanup_list=list()
 for h5_file in re.compile('(\S+\.h5)').findall(zip_str.decode('utf-8')):
     shutil.move(h5_file,'.')
