@@ -6,6 +6,35 @@ import sys
 import re
 import os
 import shutil
+import numpy as np
+
+def get_bbox(demFile):
+    from osgeo import gdal, gdalconst, osr
+    """
+        Read a raster from a DEM file
+    """   
+    ds=gdal.Open(demFile, gdalconst.GA_ReadOnly)
+    
+    proj=ds.GetProjection()
+    band=ds.GetRasterBand(1)
+    GT=ds.GetGeoTransform()
+    # ii and jj are the pixel center coordinates.  0,0 in GDAL is the upper-left
+    # corner of the first pixel.
+    ii=np.array([0, band.XSize-1])+0.5
+    jj=np.array([0, band.YSize])-0.5
+    x=GT[0]+GT[1]*ii
+    y=GT[3]+GT[5]*jj    
+    # calculate the projection from latlon to the DEM CS
+    llRef = osr.SpatialReference()
+    llRef.ImportFromEPSG(4326)
+    demRef = osr.SpatialReference()
+    demRef.ImportFromWkt(proj)
+    xform = osr.CoordinateTransformation(demRef, llRef)
+    ll=np.array(xform.TransformPoints( np.c_[x, y, np.zeros_like(x)]))[:,0:2]
+    ds=None
+    return np.min(ll[:,0]), np.min(ll[:,1]), np.max(ll[:,0]), np.max(ll[:,1])
+    
+
 
 description="Download ATL03 data from NSIDC." +\
     "  To use this, you must generate a token, using the setup_token script, " +\
@@ -14,11 +43,13 @@ description="Download ATL03 data from NSIDC." +\
     "(first) and in the directory where the script is located (second)."
 
 parser=argparse.ArgumentParser(description=description)
-parser.add_argument('-b', dest='bbox', type=float, nargs=4, required=True, help="should be of the form W S E N");
+parser.add_argument('-b', dest='bbox', type=float, nargs=4, required=False, help="should be of the form W S E N");
 parser.add_argument('-s', dest='subset', default=False, action='store_true')
 parser.add_argument('-o', dest='output_directory', type=str)
 parser.add_argument('-t', dest='time_str', type=str,default=None, help="Time range for query.  Format is YYYY-MM-DDTHH:MM:SS,YYYY-MM-DDTHH:MM:SS")
+parser.add_argument('-v', dest='version', type=str, default=203, help="data version.  Ex: 203")
 parser.add_argument('-d', dest='dry_run', default=False, action='store_true')
+parser.add_argument('-f', dest='tifFile', type=str, help="tif file giving the bounds of the data to be extracted")
 args=parser.parse_args()
 
 # look for a NSIDC_token.txt file in the current directory
@@ -42,6 +73,10 @@ token_str='&token=%s' % token
 if 'out_dir' in args:
     os.chdir(args.output_directory)
 
+if args.tifFile is not None:
+    args.bbox=np.zeros(4)
+    args.bbox[0], args.bbox[1], args.bbox[2], args.bbox[3]=get_bbox(args.tifFile)
+
 bbox_str="&bbox=%6.4f,%6.4f,%6.4f,%6.4f" % (args.bbox[0], args.bbox[1], args.bbox[2], args.bbox[3])
 
 if 'out_dir' in args:
@@ -60,7 +95,7 @@ else:
     time_str=''
 
 # build the query to submit via curl
-cmd_base='curl -O -J --dump-header response-header.txt "https://n5eil02u.ecs.nsidc.org/egi/request?short_name=ATL03&version=200&page_size=1000'
+cmd_base='curl -O -J --dump-header response-header.txt "https://n5eil02u.ecs.nsidc.org/egi/request?short_name=ATL03&version=%s&page_size=1000' % args.version
 cmd = cmd_base+'%s%s%s%s%s"'  % (token_str, bbox_str, subset_str, bounding_box_str, time_str)
 print("run_ATL03_query: executing command:\n\t"+cmd)
 
