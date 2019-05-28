@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-if [ $# -eq 0]; then
+if [ $# -eq 0 ]; then
    echo "USAGE: setup_token username password ip_address"
 fi
 
