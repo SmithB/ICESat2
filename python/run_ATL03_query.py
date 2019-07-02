@@ -95,7 +95,7 @@ else:
     time_str=''
 
 # build the query to submit via curl
-cmd_base='curl -O -J --dump-header response-header.txt "https://n5eil02u.ecs.nsidc.org/egi/request?short_name=ATL03&version=%s&page_size=1000' % args.version
+cmd_base='curl -O -J --dump-header response-header.txt "https://n5eil02u.ecs.nsidc.org/egi/request?short_name=ATL03&version=%s&page_size=99' % args.version
 cmd = cmd_base+'%s%s%s%s%s"'  % (token_str, bbox_str, subset_str, bounding_box_str, time_str)
 print("run_ATL03_query: executing command:\n\t"+cmd)
 

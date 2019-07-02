@@ -47,7 +47,7 @@ parser.add_argument('-b', dest='bbox', type=float, nargs=4, required=False, help
 parser.add_argument('-s', dest='subset', default=False, action='store_true')
 parser.add_argument('-o', dest='output_directory', type=str)
 parser.add_argument('-t', dest='time_str', type=str,default=None, help="Time range for query.  Format is YYYY-MM-DDTHH:MM:SS,YYYY-MM-DDTHH:MM:SS")
-parser.add_argument('-v', dest='version', type=str, default=203, help="data version.  Ex: 203")
+parser.add_argument('-v', dest='version', type=str, default="001", help="data version.  Ex: 203")
 parser.add_argument('-d', dest='dry_run', default=False, action='store_true')
 parser.add_argument('-f', dest='tifFile', type=str, help="tif file giving the bounds of the data to be extracted")
 args=parser.parse_args()
@@ -82,12 +82,14 @@ bbox_str="&bbox=%6.4f,%6.4f,%6.4f,%6.4f" % (args.bbox[0], args.bbox[1], args.bbo
 if 'out_dir' in args:
     os.chdir(args.output_directory)
 
+bounding_box_str="&bounding_box=%6.4f,%6.4f,%6.4f,%6.4f" % (args.bbox[0], args.bbox[1], args.bbox[2], args.bbox[3])
+
 if args.subset:
     subset_str=""
-    bounding_box_str="&bounding_box=%6.4f,%6.4f,%6.4f,%6.4f" % (args.bbox[0], args.bbox[1], args.bbox[2], args.bbox[3])
+    #bounding_box_str="&bounding_box=%6.4f,%6.4f,%6.4f,%6.4f" % (args.bbox[0], args.bbox[1], args.bbox[2], args.bbox[3])
 else:
     subset_str="&agent=NO"
-    bounding_box_str=""
+    #bounding_box_str=""
 
 if args.time_str is not None:
     time_str="&time=%s" % args.time_str
@@ -103,33 +105,42 @@ print("run_ATL06_query: executing command:\n\t"+cmd)
 if args.dry_run:
     exit()
 
-# run the curl string
-p=subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-text=p.stdout.read()
-retcode=p.wait()
-
-# check the response header to get the filename with the output
-zip_re=re.compile('filename="(.*.zip)"')
-with open('response-header.txt') as ff:
-    for line in ff:
-        m=zip_re.search(line)
-        if m is not None:
-            zip_file=m.group(1)
-zip_str=subprocess.check_output(['unzip',zip_file])
-
-# the output from unzipping the zip file is a set of directories containing the
-# h5 data files. pull the indivicual h5 files into the current directory
-cleanup_list=list()
-for h5_file in re.compile('(\S+\.h5)').findall(zip_str.decode('utf-8')):
-    shutil.move(h5_file,'.')
-    thedir=os.path.dirname(h5_file)
-    if thedir not in cleanup_list:
-        cleanup_list.append( thedir)
-        
-# delete the directories that contained the hdf5 files
-for entry in cleanup_list:
-    os.rmdir(entry)
-os.remove(zip_file)
+Done=False
+page=1
+while not Done:
+    page += 1
+    # run the curl string
+    p=subprocess.Popen(cmd[0:-1]+'&page_num=%d"' % page, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    text=p.stdout.read()
+    retcode=p.wait()
+    
+    zip_file=None
+    # check the response header to get the filename with the output
+    zip_re=re.compile('filename="(.*.zip)"')
+    with open('response-header.txt') as ff:
+        for line in ff:
+            m=zip_re.search(line)
+            if m is not None:
+                zip_file=m.group(1)
+    if zip_file is None:
+        Done=True
+        continue
+    zip_str=subprocess.check_output(['unzip',zip_file])
+    
+    # the output from unzipping the zip file is a set of directories containing the
+    # h5 data files. pull the indivicual h5 files into the current directory
+    cleanup_list=list()
+    for h5_file in re.compile('(\S+\.h5)').findall(zip_str.decode('utf-8')):
+        shutil.move(h5_file,'.')
+        thedir=os.path.dirname(h5_file)
+        if thedir not in cleanup_list:
+            cleanup_list.append( thedir)
+            
+    # delete the directories that contained the hdf5 files
+    for entry in cleanup_list:
+        os.rmtree(entry)
+    os.remove(zip_file)
+    
     
     
 
