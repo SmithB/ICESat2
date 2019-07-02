@@ -106,7 +106,7 @@ if args.dry_run:
     exit()
 
 Done=False
-page=1
+page=0
 while not Done:
     page += 1
     # run the curl string
@@ -138,7 +138,7 @@ while not Done:
             
     # delete the directories that contained the hdf5 files
     for entry in cleanup_list:
-        os.rmtree(entry)
+        shutil.rmtree(entry)
     os.remove(zip_file)
     
     
